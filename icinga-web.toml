@@ -1,0 +1,10 @@
+[template]
+src = "databases.xml.tmpl"
+dest = "/etc/icinga-web/conf.d/databases.xml"
+owner = "root"
+group = "www-data"
+mode = "0644"
+keys = [
+	"/icinga2/mysql",
+	"/icinga2/web-mysql",
+]

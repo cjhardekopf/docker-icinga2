@@ -1,0 +1,6 @@
+[template]
+src = "msmtprc.tmpl"
+dest = "/etc/msmtprc"
+keys = [
+	"/msmtp",
+]

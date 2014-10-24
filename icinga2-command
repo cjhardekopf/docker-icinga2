@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# If /etc/icinga2.orig does not exist then move over /etc/icinga2
+if ! [ -d /etc/icinga2.orig ] ; then
+	mv -f /etc/icinga2 /etc/icinga2.orig
+	ln -s /data/icinga2 /etc/icinga2
+fi
+
+# Copy the basic configuration over to /data if it does not exist
+if ! [ -e /data/icinga2/icinga2.conf ] ; then
+	if [ -e /data/icinga2 ] ; then
+		if [ -e /data/icinga2.old ] ; then
+			rm -rf /data/icinga2.old
+		fi
+		mv -f /data/icinga2 /data/icinga2.old
+	fi
+	cp -a /etc/icinga2.orig /data/icinga2
+fi
+
+mkdir -p /run/icinga2
+exec /usr/sbin/icinga2

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+rm -f /etc/icinga-web/conf.d/{database-ido,database-web}.xml
+
+/usr/lib/icinga-web/bin/clearcache.sh
+
+. /etc/apache2/envvars
+exec /usr/sbin/apache2 -D FOREGROUND

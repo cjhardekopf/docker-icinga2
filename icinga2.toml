@@ -1,0 +1,7 @@
+[template]
+src = "icinga2-mysql.conf.tmpl"
+dest = "/etc/icinga2/features-enabled/icinga2-mysql.conf"
+keys = [
+	"/icinga2/mysql",
+]
+reload_cmd = "/usr/bin/supervisorctl restart icinga2"

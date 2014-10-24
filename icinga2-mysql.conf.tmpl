@@ -1,0 +1,10 @@
+library "db_ido_mysql"
+
+{{$config := json (getv "/icinga2/mysql")}}
+
+object IdoMysqlConnection "ido-mysql" {
+  user = "{{$config.user}}",
+  password = "{{$config.password}}",
+  host = "{{$config.host}}",
+  database = "{{$config.database}}"
+}

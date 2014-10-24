@@ -1,0 +1,33 @@
+{{$config := json (getv "/msmtp")}}
+
+{{if eq $config.tls "nostarttls"}}
+defaults
+tls on
+tls_starttls off
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+{{else if eq $config.tls "starttls"}}
+defaults
+tls on
+tls_starttls on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+{{end}}
+
+account default
+host {{$config.host}}
+{{if $config.port}}
+port {{$config.port}}
+{{end}}
+{{if $config.user}}
+auth on
+user {{$config.user}}
+password {{$config.password}}
+{{end}}
+{{if eq $config.from "auto"}}
+auto_from on
+{{if $config.maildomain}}
+maildomain {{$config.maildomain}}
+{{end}}
+{{end}}
+{{if $config.logfile}}
+logfile {{$config.logfile}}
+{{end}}
