@@ -9,7 +9,8 @@ RUN apt-get update && \
 	apt-get update && \
 	DEBIAN_FRONTEND=noninteractive \
 	apt-get install -y icinga2 icinga2-ido-mysql icinga-web \
-		nagios-plugins nagios-plugins-contrib nagios-plugins-extra
+		nagios-plugins nagios-plugins-contrib nagios-plugins-extra \
+		nagios-nrpe-plugin
 
 # The icinga 2 ido-mysql module should be configured dynamically and the
 # server needs to be started. Icinga 2 configuration is pretty involved and
